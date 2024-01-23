@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('menny');
             $table->date('utolsoBe');
             $table->primary('kosar_id', 'cikkszam');
+            
             $table->timestamps();
         });
     }

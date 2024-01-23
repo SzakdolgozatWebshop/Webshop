@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -18,9 +20,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('lastLogin')->default('2024-01-01');
+            $table->tinyInteger('permission')->default(3);
             $table->rememberToken();
             $table->timestamps();
         });
+
+        User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => Hash::make('Aa123'), 'permission' => 0]);
     }
 
     /**
