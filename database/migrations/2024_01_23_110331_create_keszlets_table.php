@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->date('lastLogin');
-            $table->rememberToken();
+        Schema::create('keszlets', function (Blueprint $table) {
+            $table->foreignId('cikkszam')->references('cikkszam')->on('cikk_models');
+            $table->primary('cikkszam');
+            $table->integer('menny');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('keszlets');
     }
 };
