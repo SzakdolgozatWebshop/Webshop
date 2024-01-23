@@ -23,10 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth.basic')->group(function () {
+
     Route::middleware( ['admin'])->group(function () {
         Route::get('/get', [UserController::class, 'showAll']);
     });
-    
+
+    Route::middleware( ['manager'])->group(function () {
+        
+    });
 });
 
 
