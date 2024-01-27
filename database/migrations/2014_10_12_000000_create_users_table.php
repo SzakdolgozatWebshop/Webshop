@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('lastLogin')->default('2024-01-01');
-            $table->tinyInteger('permission')->default(3);
+            $table->tinyInteger('permission')->default(2);
             $table->rememberToken();
             $table->timestamps();
         });

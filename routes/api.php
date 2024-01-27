@@ -26,6 +26,7 @@ Route::middleware('auth.basic')->group(function () {
 
     Route::middleware( ['admin'])->group(function () {
         Route::get('/get', [UserController::class, 'showAll']);
+        Route::post('/user/newp/{id}', [UserController::class, 'newPerm']);
     });
 
     Route::middleware( ['manager'])->group(function () {
