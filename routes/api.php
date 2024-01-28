@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
-use App\Models\Admin;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
