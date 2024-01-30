@@ -16,7 +16,7 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->permission <= 1) {
+        if (Auth::user()->permission == 0) {
             return $next($request);
         }
         return response()->json(['error' => 'You do not have admin access'], 403);

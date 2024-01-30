@@ -22,8 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth.basic')->group(function () {
 
     Route::middleware( ['admin'])->group(function () {
-        Route::get('/get', [UserController::class, 'showAll']);
-        Route::post('/user/newp/{id}', [UserController::class, 'newPerm']);
+        Route::get('/users', [UserController::class, 'showAll']);
+        Route::get('/user/{id}', [UserController::class, 'showOne']);
+        Route::post('/user/permission/{id}', [UserController::class, 'newPerm']);
+        Route::post('/user/update/{id}', [UserController::class, 'updateUser']);
     });
 
     Route::middleware( ['manager'])->group(function () {
