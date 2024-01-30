@@ -6,7 +6,7 @@ use App\Models\OpcioModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     public function showAll(){
         return User::all();
