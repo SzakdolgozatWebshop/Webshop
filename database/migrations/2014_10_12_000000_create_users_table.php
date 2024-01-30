@@ -26,6 +26,7 @@ return new class extends Migration
         });
 
         User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => Hash::make('Aa123'), 'permission' => 0]);
+        User::create(['name' => 'menedzser', 'email' => 'menedzser@menedzser.com', 'password' => Hash::make('Aa123'), 'permission' => 1]);
     }
 
     /**
