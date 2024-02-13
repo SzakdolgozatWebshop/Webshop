@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Menedzser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth.basic')->group(function () {
-
+    Route::get('/usera', [Controller::class, 'getUser']);
     Route::middleware( ['admin'])->group(function () {
         Route::get('/users', [AdminController::class, 'showAll']);
         Route::get('/user/{id}', [AdminController::class, 'showOne']);
