@@ -19,15 +19,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('api_token', 60)->nullable();
             $table->date('lastLogin')->default('2024-01-01');
             $table->tinyInteger('permission')->default(2);
             $table->rememberToken();
             $table->timestamps();
         });
 
-        User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => Hash::make('Aa123'), 'permission' => 0]);
-        User::create(['name' => 'manager', 'email' => 'manager@manager.com', 'password' => Hash::make('Aa123'), 'permission' => 1]);
-        User::create(['name' => 'user', 'email' => 'user@user.com', 'password' => Hash::make('Aa123'), 'permission' => 2]);
+        User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => 'Aa123', 'permission' => 0]);
+        User::create(['name' => 'manager', 'email' => 'manager@manager.com', 'password' => 'Aa123', 'permission' => 1]);
+        User::create(['name' => 'user', 'email' => 'user@user.com', 'password' => 'Aa123', 'permission' => 2]);
     }
 
     /**

@@ -21,9 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+require __DIR__ . '/auth.php';
+//Route::post('/login', [Controller::class, 'login']);
+
 Route::middleware('auth.basic')->group(function () {
+
     Route::get('/usera', [Controller::class, 'getUser']);
-    Route::middleware( ['admin'])->group(function () {
+    Route::middleware(['admin'])->group(function () {
         Route::get('/users', [AdminController::class, 'showAll']);
         Route::get('/user/{id}', [AdminController::class, 'showOne']);
         Route::delete('/user/delete/{id}', [AdminController::class, 'deleteUser']);
