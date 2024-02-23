@@ -22,10 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 require __DIR__ . '/auth.php';
-//Route::post('/login', [Controller::class, 'login']);
+Route::post('/login', [Controller::class, 'login']);
 
 Route::middleware('auth.basic')->group(function () {
-
     Route::get('/usera', [Controller::class, 'getUser']);
     Route::middleware(['admin'])->group(function () {
         Route::get('/users', [AdminController::class, 'showAll']);
