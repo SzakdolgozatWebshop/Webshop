@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Kategoria;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,9 +15,13 @@ return new class extends Migration
         Schema::create('kategorias', function (Blueprint $table) {
             $table->id('kat_id');
             $table->string('elnevezes');
-            $table->integer('Fokategoria')->nullable();
+            $table->bigInteger('Fokategoria')->nullable();
             $table->timestamps();
         });
+        Kategoria::create([ 'elnevezes' => 'Háttértár', 'Fokategoria' => Null]);
+        Kategoria::create([ 'elnevezes' => 'HDD', 'Fokategoria' => 1]);
+        Kategoria::create([ 'elnevezes' => 'SSD', 'Fokategoria' => 1]);
+        Kategoria::create([ 'elnevezes' => 'Pendrive', 'Fokategoria' => 1]);
     }
 
     /**

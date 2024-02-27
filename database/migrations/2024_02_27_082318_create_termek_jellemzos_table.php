@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Termek_jellemzo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,10 @@ return new class extends Migration
             $table->primary(['Termek', 'Tulajdonsag']);
             $table->timestamps();
         });
+        Termek_jellemzo::create([ 'Termek' => 1, 'Tulajdonsag' => 1, 'ertek' => '200']);
+        Termek_jellemzo::create([ 'Termek' => 1, 'Tulajdonsag' => 2, 'ertek' => '25']);
+        Termek_jellemzo::create([ 'Termek' => 2, 'Tulajdonsag' => 1, 'ertek' => '120']);
+        Termek_jellemzo::create([ 'Termek' => 2, 'Tulajdonsag' => 2, 'ertek' => '16' ]);
     }
 
     /**

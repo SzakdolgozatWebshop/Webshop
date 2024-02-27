@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tulajdonsag;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,8 @@ return new class extends Migration
             $table->foreignId('Fokategoria')->references('kat_id')->on('kategorias');
             $table->timestamps();
         });
+        Tulajdonsag::create([ 'elnevezes' => 'írási sebesség', 'mertekegyseg' => "mb/s","Fokategoria"=>1]);
+        Tulajdonsag::create([ 'elnevezes' => 'tárhely ', 'mertekegyseg' => "GB","Fokategoria"=>1]);
     }
 
     /**

@@ -38,6 +38,8 @@ Route::middleware('auth.basic')->group(function () {
     });
 
     Route::middleware(['manager'])->group(function () {
+        // a termékek meg jelenitése
+        Route::get('/termek',[Menedzser::class , 'ShowTermek']);
         //egy uj cikk felvitele minden adat kell ami adatbázisban van 
         Route::post('/cikk/new', [Menedzser::class, 'newCikk']);
         //egy meg lévő cikknek az adatait modosithatjuk 
@@ -62,3 +64,4 @@ Route::middleware('auth.basic')->group(function () {
         Route::patch('/rendeles/{id}', [Menedzser::class, 'rendelesA']);
     });
 });
+Route::get('/termek',[Menedzser::class , 'ShowTermek']);

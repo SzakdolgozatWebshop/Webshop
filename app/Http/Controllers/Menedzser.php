@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CikkModel;
+use App\Models\Kategoria;
 use App\Models\KategoriaModel;
 use App\Models\KepModel;
 use App\Models\Keszlet;
 use App\Models\LeirasModel;
+use App\Models\Rend_tetel;
 use App\Models\Rendeles;
 use App\Models\Rendeles2;
+use App\Models\Termek;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class Menedzser extends Controller
 {
@@ -29,18 +30,21 @@ class Menedzser extends Controller
         $user = User::find($id);
         return $user;
     }
-    public function newCikk(Request $request)
+    public function ShowTermek() {
+        $lending = Termek::all();
+        return $lending;
+    }
+    public function newTermek(Request $request)
     {
-        //Új cikk felvitel 
+        //Új Termek felvitel 
         try {
-            $cikk = new CikkModel();
-            $cikk->marka = $request->marka;
-            $cikk->kategoria = $request->kategoria;
-            $cikk->megnevM = $request->megnevM;
-            $cikk->megnevA = $request->megnevA;
-            $cikk->eladasAr = $request->eladasAr;
-            $cikk->opcio = $request->opcio;
-            $cikk->save();
+            $Termek = new Termek();
+            $Termek->elnevezes = $request->elnevezes;
+            $Termek->Alketegoria  = $request->Alketegoria ;
+            $Termek->marka = $request->marka;
+            $Termek->keszlet = $request->keszlet;
+            $Termek->eladasi_ar = $request->eladasi_ar;
+            $Termek->save();
         } catch (QueryException $e) {
             // Ha kivétel történik (például az egyediségi megsértése), akkor itt kezeld 
             if ($e->errorInfo[1] == 1062) { // 1062 az egyediségi megsértés hibakódja MySQL-ben 
@@ -52,87 +56,73 @@ class Menedzser extends Controller
             }
         }
     }
-    public function modCikk(Request $request, $cikkszam)
+    public function modTermek(Request $request, $Termekszam)
     {
-        //Cikk módositása felvitel 
-        $cikk = CikkModel::find($cikkszam);
-        $cikk->marka = $request->marka;
-        $cikk->kategoria = $request->kategoria;
-        $cikk->megnevM = $request->megnevM;
-        $cikk->megnevA = $request->megnevA;
-        $cikk->eladasAr = $request->eladasAr;
-        $cikk->opcio = $request->opcio;
-        $cikk->save();
+        //Termek módositása felvitel 
+        $Termek = Termek::find($Termekszam);
+        $Termek->elnevezes = $request->elnevezes;
+        $Termek->Alketegoria  = $request->Alketegoria ;
+        $Termek->marka = $request->marka;
+        $Termek->keszlet = $request->keszlet;
+        $Termek->eladasi_ar = $request->eladasi_ar;
+        $Termek->save();
     }
-    public function cikkkepN(Request $request)
+    public function TermekkepN(Request $request)
     {
         $kep = new KepModel();
-        $kep->cikkszam = $request->cikkszam;
+        $kep->Termekszam = $request->Termekszam;
         $kep->URL = $request->URL;
         $kep->save();
     }
-    public function cikkkepM(Request $request, $cikkszam)
+    public function TermekkepM(Request $request, $Termekszam)
     {
-        $kep = KepModel::find($cikkszam);
-        $kep->cikkszam = $request->cikkszam;
+        $kep = KepModel::find($Termekszam);
+        $kep->Termekszam = $request->Termekszam;
         $kep->URL = $request->URL;
         $kep->save();
     }
-    public function cikkleirasN(Request $request)
+    public function TermekleirasN(Request $request)
     {
         $leiras = new LeirasModel();
-        $leiras->cikkszam = $request->cikkszam;
+        $leiras->Termekszam = $request->Termekszam;
         $leiras->leirasText = $request->leirasText;
         $leiras->Mnev = $request->Mnev;
         $leiras->Anev = $request->Anev;
         $leiras->save();
     }
-    public function cikkleirasM(Request $request,$cikkszam)
+    public function TermekleirasM(Request $request,$Termekszam)
     {
-        $leiras =LeirasModel::find($cikkszam);
-        $leiras->cikkszam = $request->cikkszam;
+        $leiras =LeirasModel::find($Termekszam);
+        $leiras->Termekszam = $request->Termekszam;
         $leiras->leirasText = $request->leirasText;
         $leiras->Mnev = $request->Mnev;
         $leiras->Anev = $request->Anev;
         $leiras->save();
     }
-    public function cikkategoriN(Request $request)
+    public function TermekategoriN(Request $request)
     {
-        $kateg = new KategoriaModel();
-        $kateg->Mnev = $request->Mnev;
-        $kateg->Anev = $request->Anev;
+        $kateg = new Kategoria();
+        $kateg->elnevezes = $request->elnevezes;
+        $kateg->Fokategoria = $request->Fokategoria;
         $kateg->save();
     }
-    public function cikkategoriM(Request $request,$kat_id)
+    public function TermekategoriM(Request $request,$kat_id)
     {
-        $kateg = KategoriaModel::find($kat_id);
-        $kateg->Mnev = $request->Mnev;
-        $kateg->Anev = $request->Anev;
+        $kateg = Kategoria::find($kat_id);
+        $kateg->elnevezes = $request->elnevezes;
+        $kateg->Fokategoria = $request->Fokategoria;
         $kateg->save();
     }
-    public function keszletN(Request $request)
+
+    public function show($rend_id, $Termek)
     {
-        $kateg = new Keszlet();
-        $kateg->cikkszam = $request->cikkszam;
-        $kateg->menny = $request->menny;
-        $kateg->save();
-    }
-    public function keszletM(Request $request,$cikkszam)
-    {
-        $kateg = Keszlet::find($cikkszam);
-        $kateg->cikkszam = $request->cikkszam;
-        $kateg->menny = $request->menny;
-        $kateg->save();
-    }
-    public function show($rend_id, $cikkszam)
-    {
-        $lending = Rendeles2::where('rend_id', $rend_id)->where('cikkszam', $cikkszam)->get();
+        $lending = Rend_tetel::where('rend_id', $rend_id)->where('Termek', $Termek)->get();
         return $lending[0];
     }
 
-    public function rendelesA(Request $request,$rend_id,$cikkszam)
+    public function rendelesA(Request $request,$rend_id,$Termek)
     {
-        $rendeles2 = Rendeles::show($rend_id,$cikkszam);
+        $rendeles2 = Rendeles::show($rend_id,$Termek);
         $rendeles2->allapot = $request->allapot;
         $rendeles2->save();
     }

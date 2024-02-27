@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Termek;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->integer('eladasi_ar');
             $table->timestamps();
         });
+        Termek::create([ 'elnevezes' => 'Predator', 'Alketegoria' => 2, 'marka' => "Acer", 'keszlet' => 2,'eladasi_ar' => 2500,]);
+        Termek::create([ 'elnevezes' => 'IronKey ', 'Alketegoria' => 3, 'marka' => "Kingston", 'keszlet' => 50,'eladasi_ar' => 2000,]);
     }
 
     /**

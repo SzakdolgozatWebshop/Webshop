@@ -10,11 +10,11 @@ class Beszerzes extends Model
     use HasFactory;
 
     protected $primaryKey = [
-        'Termek',
-        'mikor'
+        'Termek'
     ];
 
     protected $fillable = [
+        'Termek','mikor',
         'mennyi'
     ];
 }

@@ -9,11 +9,17 @@ class Termek_jellemzo extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = [
-        'Termek',
-        'Tulajdonsag'
-    ];
+    protected function setKeysForSaveQuery($query)
+    {
+        $query
+            ->where('Termek', '=', $this->getAttribute('ter_id'))
+            ->where('Tulajdonsag', '=', $this->getAttribute('tul_id'));
 
-    protected $fillable = 'ertek';
+
+        return $query;
+    }
+
+
+    protected $fillable = ['Termek','Tulajdonsag','ertek'];
 
 }
