@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kosars', function (Blueprint $table) {
-            $table->id('kosar_id');
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->dateTime('kosarLetre');
+        Schema::create('termeks', function (Blueprint $table) {
+            $table->id('ter_id');
+            $table->string('elnevezes');
+            $table->foreignId('Alketegoria')->references('kat_id')->on('kategorias');
+            $table->string('marka');
+            $table->integer('keszlet');
+            $table->integer('eladasi_ar');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kosars');
+        Schema::dropIfExists('termeks');
     }
 };

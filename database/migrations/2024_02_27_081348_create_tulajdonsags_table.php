@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('opcio_models', function (Blueprint $table) {
-            $table->id('op_id');
-            $table->string('szoveg');
+        Schema::create('tulajdonsags', function (Blueprint $table) {
+            $table->id('tul_id');
+            $table->string('elnevezes');
+            $table->string('mertekegyseg');
+            $table->foreignId('Fokategoria')->references('kat_id')->on('kategorias');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('opcio_models');
+        Schema::dropIfExists('tulajdonsags');
     }
 };

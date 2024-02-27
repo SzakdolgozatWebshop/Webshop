@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KepModel extends Model
+class Termek_jellemzo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'cikkszam',
-        'URL'
+    protected $primaryKey = [
+        'Termek',
+        'Tulajdonsag'
     ];
+
+    protected $fillable = 'ertek';
+
 }

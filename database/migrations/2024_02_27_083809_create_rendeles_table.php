@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategoria_models', function (Blueprint $table) {
-            $table->id('kategoria_id');
-            $table->string('megnevM');
-            $table->string('megnevA');
+        Schema::create('rendeles', function (Blueprint $table) {
+            $table->id('rend_szam');
+            $table->date('kelt');
+            $table->foreignId('vasarlo')->references('id')->on('users');
+            $table->foreignId('csomag')->references('csomag')->on('csomags');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategoria_models');
+        Schema::dropIfExists('rendeles');
     }
 };

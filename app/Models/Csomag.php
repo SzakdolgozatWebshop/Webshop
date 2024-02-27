@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeirasModel extends Model
+class Csomag extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = [
-        'id'
-    ];
+    protected $primaryKey = 'csomag';
 
     protected $fillable = [
-        'cikkszam',
-        'leirasText',
-        'Mnev',
-        'Anev'
+        'atadva',
+        'allapot'
     ];
 }

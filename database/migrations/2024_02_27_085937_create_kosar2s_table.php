@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rendeles', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->date('rendelesDatum');
+        Schema::create('kosar2s', function (Blueprint $table) {
+            $table->foreignId('kosar_id')->references('kosar_id')->on('kosars');
+            $table->foreignId('Termek')->references('ter_id')->on('termeks');
+            $table->integer('menny');
+            $table->primary(['kosar_id', 'Termek']);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rendeles');
+        Schema::dropIfExists('kosar2s');
     }
 };

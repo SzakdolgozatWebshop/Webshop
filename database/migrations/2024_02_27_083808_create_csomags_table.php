@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leiras_models', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cikkszam')->references('cikkszam')->on('cikk_models');
-            $table->string('leirasText');
-            $table->string('Mnev');
-            $table->string('Anev');
+        Schema::create('csomags', function (Blueprint $table) {
+            $table->id('csomag');
+            $table->date('atadva');
+            $table->boolean('allapot');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leiras_models');
+        Schema::dropIfExists('csomags');
     }
 };

@@ -9,12 +9,10 @@ class Kosar2 extends Model
 {
     use HasFactory;
 
-    
-    protected $fillable = [
+    protected $primaryKey = [
         'kosar_id',
-        'cikkszam',
-        'menny',
-        'utolsoBe'
+        'Termek'
     ];
 
+    protected $fillable = 'menny';
 }

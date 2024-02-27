@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CikkModel extends Model
+class Rend_tetel extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'cikkszam';
+    protected $primaryKey = [
+        'rendszam',
+        'Termek'
+    ];
 
     protected $fillable = [
-        'marka',
-        'kategoria',
-        'megnevM',
-        'megnevA',
-        'eladasAr',
-        'opcio_id'
+        'menny',
+        'ar',
+        'csomagolva'
     ];
 }

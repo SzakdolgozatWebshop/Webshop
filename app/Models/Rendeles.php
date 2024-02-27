@@ -9,8 +9,11 @@ class Rendeles extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'rend_szam';
+
     protected $fillable = [
-        'user_id',
-        'rendelesDatum'
+        'kelt',
+        'vasarlo',
+        'csomag'
     ];
 }

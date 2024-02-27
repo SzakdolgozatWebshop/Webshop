@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kep_models', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('cikkszam')->references('cikkszam')->on('cikk_models');
-            $table->string('URL');
+        Schema::create('beszerzes', function (Blueprint $table) {
+            $table->foreignId('Termek')->references('ter_id')->on('termeks');
+            $table->date('mikor');
+            $table->integer('mennyi');
+            $table->primary(['Termek', 'mikor']);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kep_models');
+        Schema::dropIfExists('beszerzes');
     }
 };

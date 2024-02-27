@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('keszlets', function (Blueprint $table) {
-            $table->foreignId('cikkszam')->references('cikkszam')->on('cikk_models');
-            $table->primary('cikkszam');
-            $table->integer('menny');
+        Schema::create('kategorias', function (Blueprint $table) {
+            $table->id('kat_id');
+            $table->string('elnevezes');
+            $table->integer('Fokategoria')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('keszlets');
+        Schema::dropIfExists('kategorias');
     }
 };
