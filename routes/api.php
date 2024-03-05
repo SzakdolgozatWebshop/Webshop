@@ -62,6 +62,12 @@ Route::middleware('auth.basic')->group(function () {
         Route::post('/keszlet/mod', [Menedzser::class, 'keszletM']);
         //Mindent tudunk modositani, cikkszám szerint
         Route::patch('/rendeles/{id}', [Menedzser::class, 'rendelesA']);
+        //Mindent meg jelenitünk
+        Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
+        Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
+
+        
     });
 });
-Route::get('/termek',[Menedzser::class , 'ShowTermek']);
+Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
+

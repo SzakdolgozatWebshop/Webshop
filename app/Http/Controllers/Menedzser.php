@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Kategoria;
 use App\Models\KategoriaModel;
 use App\Models\KepModel;
@@ -9,7 +9,6 @@ use App\Models\Keszlet;
 use App\Models\LeirasModel;
 use App\Models\Rend_tetel;
 use App\Models\Rendeles;
-use App\Models\Rendeles2;
 use App\Models\Termek;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -29,6 +28,22 @@ class Menedzser extends Controller
         //Felhasználó lekérés egy
         $user = User::find($id);
         return $user;
+    }
+    public function rendeleShow()
+    {
+        $rendeles2 = Rendeles::all();
+        return $rendeles2;
+    }
+    public function rendelTetelfind(Request $request,$rend_szam)
+    {
+        $rend_tetel = DB::table('rendeles')
+                        ->select('t.marka', 't.elnevezes', 't.keszlet', 'rt.menny', 'rt.ar')
+                        ->join('rend_tetels as rt', 'rt.rend_szam', '=', 'rendeles.rend_szam')
+                        ->join('termeks as t', 'rt.Termek', '=', 't.ter_id')
+                        ->where('rendeles.rend_szam', $rend_szam)
+                        ->get();
+        
+        return $rend_tetel;
     }
     public function ShowTermek() {
         $lending = Termek::all();
@@ -81,24 +96,6 @@ class Menedzser extends Controller
         $kep->URL = $request->URL;
         $kep->save();
     }
-    public function TermekleirasN(Request $request)
-    {
-        $leiras = new LeirasModel();
-        $leiras->Termekszam = $request->Termekszam;
-        $leiras->leirasText = $request->leirasText;
-        $leiras->Mnev = $request->Mnev;
-        $leiras->Anev = $request->Anev;
-        $leiras->save();
-    }
-    public function TermekleirasM(Request $request,$Termekszam)
-    {
-        $leiras =LeirasModel::find($Termekszam);
-        $leiras->Termekszam = $request->Termekszam;
-        $leiras->leirasText = $request->leirasText;
-        $leiras->Mnev = $request->Mnev;
-        $leiras->Anev = $request->Anev;
-        $leiras->save();
-    }
     public function TermekategoriN(Request $request)
     {
         $kateg = new Kategoria();
@@ -126,5 +123,6 @@ class Menedzser extends Controller
         $rendeles2->allapot = $request->allapot;
         $rendeles2->save();
     }
+
 
 }
