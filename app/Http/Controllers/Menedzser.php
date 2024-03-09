@@ -49,6 +49,31 @@ class Menedzser extends Controller
         $lending = Termek::all();
         return $lending;
     }
+    public function TermekM(Request $request, $Termekszam)
+    {
+        //Termek módositása felvitel 
+        $Termek = Termek::find($Termekszam);
+        
+        // Ellenőrzés, hogy a beérkező adatok üresek-e
+        if (!empty($request->elnevezes)) {
+            $Termek->elnevezes = $request->json('elnevezes');
+        }
+    
+        if (!empty($request->marka)) {
+            $Termek->marka = $request->json('marka');
+        }
+    
+        if (!empty($request->keszlet)) {
+            $Termek->keszlet = $request->json('keszlet');
+        }
+    
+        if (!empty($request->eladasi_ar)) {
+            $Termek->eladasi_ar = $request->json('eladasi_ar');
+        }
+    
+        $Termek->save();
+        return response()->json(['success' => true]);
+    }
     public function newTermek(Request $request)
     {
         //Új Termek felvitel 
@@ -71,17 +96,7 @@ class Menedzser extends Controller
             }
         }
     }
-    public function modTermek(Request $request, $Termekszam)
-    {
-        //Termek módositása felvitel 
-        $Termek = Termek::find($Termekszam);
-        $Termek->elnevezes = $request->elnevezes;
-        $Termek->Alketegoria  = $request->Alketegoria ;
-        $Termek->marka = $request->marka;
-        $Termek->keszlet = $request->keszlet;
-        $Termek->eladasi_ar = $request->eladasi_ar;
-        $Termek->save();
-    }
+
     public function TermekkepN(Request $request)
     {
         $kep = new KepModel();

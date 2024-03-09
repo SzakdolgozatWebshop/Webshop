@@ -56,10 +56,8 @@ Route::middleware('auth.basic')->group(function () {
         Route::post('/cikkat/new', [Menedzser::class, 'cikkategoriN']);
         //Mindent tudunk modositani, cikkszám szerint
         Route::post('/cikkat/mod', [Menedzser::class, 'cikkategoriM']);
-        //Létre hozzuk egy meg lévő cikkszámra készletett
-        Route::post('/keszlet/new', [Menedzser::class, 'keszletN']);
         //Mindent tudunk modositani, cikkszám szerint
-        Route::post('/keszlet/mod', [Menedzser::class, 'keszletM']);
+
         //Mindent tudunk modositani, cikkszám szerint
         Route::patch('/rendeles/{id}', [Menedzser::class, 'rendelesA']);
         //Mindent meg jelenitünk
@@ -70,4 +68,7 @@ Route::middleware('auth.basic')->group(function () {
     });
 });
 Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
-
+//menegerhez kell ado rakni 
+Route::post('/keszlet/mod/{termekszam}', [Menedzser::class, 'TermekM']);
+Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
+Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
