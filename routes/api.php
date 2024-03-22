@@ -52,10 +52,6 @@ Route::middleware('auth.basic')->group(function () {
         Route::post('/cikleir/new', [Menedzser::class, 'cikkleirasN']);
         //Mindent tudunk modositani, cikkszám szerint
         Route::post('/cikleir/mod', [Menedzser::class, 'cikkleirasM']);
-        //Egy uj kategoria létrehozzás
-        Route::post('/cikkat/new', [Menedzser::class, 'cikkategoriN']);
-        //Mindent tudunk modositani, cikkszám szerint
-        Route::post('/cikkat/mod', [Menedzser::class, 'cikkategoriM']);
         //Mindent tudunk modositani, cikkszám szerint
 
         //Mindent tudunk modositani, cikkszám szerint
@@ -68,7 +64,10 @@ Route::middleware('auth.basic')->group(function () {
     });
 });
 Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
-//menegerhez kell ado rakni 
+//menegerhez kell oda rakni 
 Route::post('/keszlet/mod/{termekszam}', [Menedzser::class, 'TermekM']);
 Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
+Route::get('/leiras/{id}', [Menedzser::class, 'LeirasShow']);
 Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
+Route::get('/rendtabla/{rend_id}', [Menedzser::class, 'rendelesTabla']);
+Route::get('/rendtablaleiras/{id}', [Menedzser::class, 'rTablaLiras']);

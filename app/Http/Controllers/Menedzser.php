@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use App\Models\Kategoria;
-use App\Models\KategoriaModel;
 use App\Models\KepModel;
 use App\Models\Keszlet;
 use App\Models\LeirasModel;
@@ -23,6 +21,16 @@ class Menedzser extends Controller
         //Felhasználó lekérés all
         return User::all();
     }
+    public function LeirasShow($termek)
+    {
+        return DB::table('termek_jellemzos as tj')
+                    ->select('td.mertekegyseg','tj.ertek')
+                    ->join('termeks as tk','tk.ter_id','=','tj.Termek')
+                    ->join('tulajdonsags as td','td.tul_id','=','tj.Tulajdonsag')
+                    ->where('tk.ter_id','=',$termek)
+                    ->get();
+    }
+
     public function MenedzserFelhasznaloEgy(Request $request, $id)
     {
         //Felhasználó lekérés egy
@@ -31,8 +39,27 @@ class Menedzser extends Controller
     }
     public function rendeleShow()
     {
-        $rendeles2 = Rendeles::all();
-        return $rendeles2;
+       
+        return DB::table('rendeles as rs')
+        ->select('*')
+
+        ->get();
+    }
+    public function rendelesTabla($rend_id)
+    {
+        return DB::table('rend_tetels as rt')
+        ->select('rt.Termek','rt.menny','rt.ar', 'ts.elnevezes', 'ts.marka', 'ts.keszlet' )
+        ->join('termeks as ts','ts.ter_id' ,'rt.Termek')
+        ->where('rt.rend_szam', '=', $rend_id)
+        ->get();
+    }
+    public function rTablaLiras($id){
+
+        return DB::table('termek_jellemzos as tr')
+        ->select('tr.Termek','tr.ertek','tg.elnevezes','tg.mertekegyseg')
+        ->join('tulajdonsags as tg', 'tr.Tulajdonsag', 'tg.tul_id')
+        ->where('tr.Termek', '=', $id)
+        ->get();
     }
     public function rendelTetelfind(Request $request,$rend_szam)
     {
@@ -86,10 +113,9 @@ class Menedzser extends Controller
             $Termek->eladasi_ar = $request->eladasi_ar;
             $Termek->save();
         } catch (QueryException $e) {
-            // Ha kivétel történik (például az egyediségi megsértése), akkor itt kezeld 
+            // Ha kivétel történik (például az egyediségi megsértése)
             if ($e->errorInfo[1] == 1062) { // 1062 az egyediségi megsértés hibakódja MySQL-ben 
                 echo "A rekord már létezik a táblában.";
-                //return redirect "/"; 
             } else {
                 // Más típusú kivétel esetén kezelheted őket itt 
                 echo "Hiba történt: " . $e->getMessage();
@@ -111,20 +137,7 @@ class Menedzser extends Controller
         $kep->URL = $request->URL;
         $kep->save();
     }
-    public function TermekategoriN(Request $request)
-    {
-        $kateg = new Kategoria();
-        $kateg->elnevezes = $request->elnevezes;
-        $kateg->Fokategoria = $request->Fokategoria;
-        $kateg->save();
-    }
-    public function TermekategoriM(Request $request,$kat_id)
-    {
-        $kateg = Kategoria::find($kat_id);
-        $kateg->elnevezes = $request->elnevezes;
-        $kateg->Fokategoria = $request->Fokategoria;
-        $kateg->save();
-    }
+
 
     public function show($rend_id, $Termek)
     {
