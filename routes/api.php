@@ -39,35 +39,16 @@ Route::middleware('auth.basic')->group(function () {
 
     Route::middleware(['manager'])->group(function () {
         // a termékek meg jelenitése
-        Route::get('/termek',[Menedzser::class , 'ShowTermek']);
-        //egy uj cikk felvitele minden adat kell ami adatbázisban van 
-        Route::post('/cikk/new', [Menedzser::class, 'newCikk']);
-        //egy meg lévő cikknek az adatait modosithatjuk 
-        Route::post('/cikk/mod', [Menedzser::class, 'modCikk']);
-        //egy uj cikk felvitele minden adat kell ami adatbázisban van , URL még nemtudjuk hogy mukodik majd 
-        Route::post('/cikkep/new', [Menedzser::class, 'cikkkepN']);
-        // ULR és Cikkszám modositás lehet 
-        Route::post('/cikkep/mod', [Menedzser::class, 'cikkkepM']);
-        // Egy uj leirás létre hozzása egy meg létező cikkszámhoz
-        Route::post('/cikleir/new', [Menedzser::class, 'cikkleirasN']);
-        //Mindent tudunk modositani, cikkszám szerint
-        Route::post('/cikleir/mod', [Menedzser::class, 'cikkleirasM']);
-        //Mindent tudunk modositani, cikkszám szerint
 
-        //Mindent tudunk modositani, cikkszám szerint
-        Route::patch('/rendeles/{id}', [Menedzser::class, 'rendelesA']);
-        //Mindent meg jelenitünk
+        //Mindent meg jelenitünk 
+        Route::post('/keszlet/mod/{termekszam}', [Menedzser::class, 'TermekM']);
         Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
+        Route::get('/rendtabla/{rend_id}', [Menedzser::class, 'rendelesTabla']);
         Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
+        Route::get('/rendtablaleiras/{id}', [Menedzser::class, 'rTablaLiras']);
 
         
     });
 });
 Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
 //menegerhez kell oda rakni 
-Route::post('/keszlet/mod/{termekszam}', [Menedzser::class, 'TermekM']);
-Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
-Route::get('/leiras/{id}', [Menedzser::class, 'LeirasShow']);
-Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
-Route::get('/rendtabla/{rend_id}', [Menedzser::class, 'rendelesTabla']);
-Route::get('/rendtablaleiras/{id}', [Menedzser::class, 'rTablaLiras']);

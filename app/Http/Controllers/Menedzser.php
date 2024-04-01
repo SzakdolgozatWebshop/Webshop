@@ -16,11 +16,7 @@ class Menedzser extends Controller
 {
     //
 
-    public function MenedzserFelhasznaloAll()
-    {
-        //Felhasználó lekérés all
-        return User::all();
-    }
+
     public function LeirasShow($termek)
     {
         return DB::table('termek_jellemzos as tj')
@@ -123,34 +119,7 @@ class Menedzser extends Controller
         }
     }
 
-    public function TermekkepN(Request $request)
-    {
-        $kep = new KepModel();
-        $kep->Termekszam = $request->Termekszam;
-        $kep->URL = $request->URL;
-        $kep->save();
-    }
-    public function TermekkepM(Request $request, $Termekszam)
-    {
-        $kep = KepModel::find($Termekszam);
-        $kep->Termekszam = $request->Termekszam;
-        $kep->URL = $request->URL;
-        $kep->save();
-    }
 
-
-    public function show($rend_id, $Termek)
-    {
-        $lending = Rend_tetel::where('rend_id', $rend_id)->where('Termek', $Termek)->get();
-        return $lending[0];
-    }
-
-    public function rendelesA(Request $request,$rend_id,$Termek)
-    {
-        $rendeles2 = Rendeles::show($rend_id,$Termek);
-        $rendeles2->allapot = $request->allapot;
-        $rendeles2->save();
-    }
 
 
 }
