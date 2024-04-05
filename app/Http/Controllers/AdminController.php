@@ -33,19 +33,4 @@ class AdminController extends Controller
         return User::find($id)->delete();
     }
 
-    public function newOpcio(Request $request){
-        $opcio = new OpcioModel();
-        $opcio->szoveg = $request->szoveg;
-        $opcio->save();
-    }
-
-    public function updateOpcio(Request $request, $op_id){
-        $opcio = OpcioModel::find($op_id);
-        $opcio->szoveg = $request->szoveg;
-        $opcio->save();
-    }
-
-    public function delOpcio($op_id){
-        return OpcioModel::find($op_id)->delete();
-    }
 }

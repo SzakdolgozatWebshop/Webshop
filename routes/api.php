@@ -32,9 +32,6 @@ Route::middleware('auth.basic')->group(function () {
         Route::delete('/user/delete/{id}', [AdminController::class, 'deleteUser']);
         Route::patch('/user/permission/{id}', [AdminController::class, 'newPerm']);
         Route::post('/user/update/{id}', [AdminController::class, 'updateUser']);
-        Route::post('/opcio/new', [AdminController::class, 'newOpcio']);
-        Route::post('/opcio/update/{id}', [AdminController::class, 'updateOpcio']);
-        Route::delete('/opcio/delete/{id}', [AdminController::class, 'delOpcio']);
     });
 
     Route::middleware(['manager'])->group(function () {
@@ -50,5 +47,13 @@ Route::middleware('auth.basic')->group(function () {
         
     });
 });
+
+//Mindent meg jelenitünk 
+Route::post('/keszlet/mod/{termekszam}', [Menedzser::class, 'TermekM']);
+Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
+Route::get('/rendtabla/{rend_id}', [Menedzser::class, 'rendelesTabla']);
+Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
+Route::get('/rendtablaleiras/{id}', [Menedzser::class, 'rTablaLiras']);
+
 Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
 //menegerhez kell oda rakni 
