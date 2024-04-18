@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('Termek')->references('ter_id')->on('termeks');
             $table->integer('menny');
             $table->integer('ar');
+            $table->integer('allapot');
             $table->foreignId('csomagolva')->references('csomag')->on('csomags');
             $table->primary(['rend_szam', 'Termek']);
             $table->timestamps();

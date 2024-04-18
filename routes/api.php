@@ -54,6 +54,6 @@ Route::get('/rendeleShow', [Menedzser::class, 'rendeleShow']);
 Route::get('/rendtabla/{rend_id}', [Menedzser::class, 'rendelesTabla']);
 Route::get('/rendtetel/{rend_szam}', [Menedzser::class, 'rendelTetelfind']);
 Route::get('/rendtablaleiras/{id}', [Menedzser::class, 'rTablaLiras']);
-
+Route::post('/rendtablam/{rend_szam}/{termekId}',[Menedzser::class,'rValtozas']);
 Route::get('/termekShow',[Menedzser::class , 'ShowTermek']);
 //menegerhez kell oda rakni 

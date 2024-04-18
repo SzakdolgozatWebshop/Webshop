@@ -17,6 +17,7 @@ class Rend_tetel extends Model
     protected $fillable = [
         'menny',
         'ar',
-        'csomagolva'
+        'csomagolva',
+        'allapot'
     ];
 }

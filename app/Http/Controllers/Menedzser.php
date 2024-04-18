@@ -44,7 +44,7 @@ class Menedzser extends Controller
     public function rendelesTabla($rend_id)
     {
         return DB::table('rend_tetels as rt')
-        ->select('rt.Termek','rt.menny','rt.ar', 'ts.elnevezes', 'ts.marka', 'ts.keszlet' )
+        ->select('rt.Termek','rt.menny','rt.ar', 'ts.elnevezes', 'ts.marka', 'ts.keszlet','rt.allapot' )
         ->join('termeks as ts','ts.ter_id' ,'rt.Termek')
         ->where('rt.rend_szam', '=', $rend_id)
         ->get();
@@ -57,6 +57,23 @@ class Menedzser extends Controller
         ->where('tr.Termek', '=', $id)
         ->get();
     }
+
+    
+    public function rValtozas(Request $request,$rend_szam, $termekId)
+    {
+        // Az adott termékhez tartozó rekordot lekérjük
+        $rendtabla = Rend_tetel::where('rend_szam', $rend_szam)
+        ->where('termek_id', $termekId);
+
+        // Frissítjük a pipa gomb állapotát az adatbázisban
+        $rendtabla->allapot = $request->json("allapot");
+        $rendtabla->save();
+    
+        // Válaszként elküldjük az új állapotot
+        return response()->json($rendtabla);
+    }
+
+
     public function rendelTetelfind(Request $request,$rend_szam)
     {
         $rend_tetel = DB::table('rendeles')
