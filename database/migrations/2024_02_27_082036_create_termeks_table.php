@@ -3,7 +3,6 @@
 use App\Models\Termek;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,14 +15,14 @@ return new class extends Migration
         Schema::create('termeks', function (Blueprint $table) {
             $table->id('ter_id');
             $table->string('elnevezes')->nullable();
-            $table->foreignId('Alketegoria')->references('kat_id')->on('kategorias');
+            $table->foreignId('Alkategoria')->references('kat_id')->on('kategorias');
             $table->string('marka');
             $table->integer('keszlet');
             $table->integer('eladasi_ar');
             $table->timestamps();
         });
-        Termek::create([ 'elnevezes' => 'Predator', 'Alketegoria' => 2, 'marka' => "Acer", 'keszlet' => 2,'eladasi_ar' => 2500,]);
-        Termek::create([ 'elnevezes' => 'IronKey ', 'Alketegoria' => 3, 'marka' => "Kingston", 'keszlet' => 50,'eladasi_ar' => 2000,]);
+        Termek::create([ 'elnevezes' => 'Predator', 'Alkategoria' => 2, 'marka' => "Acer", 'keszlet' => 2,'eladasi_ar' => 2500,]);
+        Termek::create([ 'elnevezes' => 'IronKey ', 'Alkategoria' => 3, 'marka' => "Kingston", 'keszlet' => 50,'eladasi_ar' => 2000,]);
     }
 
     /**

@@ -13,7 +13,7 @@ class Termek extends Model
 
     protected $fillable = [
         'elnevezes',
-        'Alketegoria',
+        'Alkategoria',
         'marka',
         'keszlet',
         'eladasi_ar'

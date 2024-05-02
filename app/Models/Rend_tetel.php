@@ -9,10 +9,13 @@ class Rend_tetel extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = [
-        'rendszam',
+
+    protected $primaryKey = 'composite_key';
+
+    /* protected $primaryKey = [
+        'rend_szam',
         'Termek'
-    ];
+    ]; */
 
     protected $fillable = [
         'menny',
@@ -20,4 +23,9 @@ class Rend_tetel extends Model
         'csomagolva',
         'allapot'
     ];
+
+    public function getCompositeKeyAttribute()
+    {
+        return $this->rend_szam . '_' . $this->Termek;
+    }
 }

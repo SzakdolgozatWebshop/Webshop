@@ -1,0 +1,359 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Webshop",
+    "collectionId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+    "dateExported": "2024-05-02T10:43:18.765Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "Admin",
+            "containerId": "",
+            "created": "2024-05-02T10:29:47.058Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "Manager",
+            "containerId": "",
+            "created": "2024-05-02T10:33:08.601Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "698258f0-3410-4beb-93db-5fd4c69db0dd",
+            "name": "Publikus",
+            "containerId": "",
+            "created": "2024-05-02T10:38:08.757Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "203e2745-4d09-4c43-8fe6-a14325e93882",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "newTermek",
+            "url": "http://localhost:8000/api/newTermek?elnevezes=J540&Alketegoria=3&marka=Samsung&keszlet=31&eladasi_ar=21990",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-24T19:36:18.381Z",
+            "modified": "2024-04-24T19:41:16.553Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "elnevezes",
+                    "value": "J540",
+                    "isPath": false
+                },
+                {
+                    "name": "Alketegoria",
+                    "value": "3",
+                    "isPath": false
+                },
+                {
+                    "name": "marka",
+                    "value": "Samsung",
+                    "isPath": false
+                },
+                {
+                    "name": "keszlet",
+                    "value": "31",
+                    "isPath": false
+                },
+                {
+                    "name": "eladasi_ar",
+                    "value": "21990",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "fa9b41af-6644-4360-8cd6-57145d079d7e",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "698258f0-3410-4beb-93db-5fd4c69db0dd",
+            "name": "showTermek",
+            "url": "http://localhost:8000/api/termekShow",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-04-24T20:01:02.432Z",
+            "modified": "2024-04-24T20:01:21.080Z",
+            "headers": []
+        },
+        {
+            "_id": "a85899aa-33bc-45ba-bda0-20d35a323856",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "newTerJell",
+            "url": "http://localhost:8000/api/newTerJell?Termek=1&Tulajdonsag=2&ertek=500",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-24T19:45:12.992Z",
+            "modified": "2024-04-24T19:48:58.989Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "Termek",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "Tulajdonsag",
+                    "value": "2",
+                    "isPath": false
+                },
+                {
+                    "name": "ertek",
+                    "value": "500",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "e0360bf6-da82-4d22-9228-4842236a8e45",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "showTulajdonsag",
+            "url": "http://localhost:8000/api/showTul",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-24T20:43:56.086Z",
+            "modified": "2024-05-02T10:28:47.260Z",
+            "headers": [],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "admin@admin.com",
+                    "password": "Aa123"
+                }
+            }
+        },
+        {
+            "_id": "9ff9df40-7f8d-451f-a0e9-71a5f8992a91",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "teszt",
+            "url": "http://localhost:8000/newTerJell",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-04-24T21:00:38.014Z",
+            "modified": "2024-04-24T21:00:41.580Z",
+            "headers": []
+        },
+        {
+            "_id": "ed51da04-9ca8-4707-be64-390d6f55105e",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "showUsers",
+            "url": "http://localhost:8000/api/users",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-05-02T10:29:01.021Z",
+            "modified": "2024-05-02T10:29:33.035Z",
+            "headers": [],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "admin@admin.com",
+                    "password": "Aa123"
+                }
+            }
+        },
+        {
+            "_id": "b1165bf2-3a12-408e-be24-51a8ffc3fb76",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "showUser",
+            "url": "http://localhost:8000/api/user/1",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-05-02T10:30:07.047Z",
+            "modified": "2024-05-02T10:30:26.724Z",
+            "headers": [],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "admin@admin.com",
+                    "password": "Aa123"
+                }
+            }
+        },
+        {
+            "_id": "53565751-a8c7-43bb-bb95-d74107b20610",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "deleteUser",
+            "url": "",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-05-02T10:30:49.382Z",
+            "modified": "2024-05-02T10:30:49.382Z",
+            "headers": []
+        },
+        {
+            "_id": "380d18b9-f012-42fd-ab0b-207647b89130",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "4893f2b6-b6c3-4047-b82c-7f9254e6b5f8",
+            "name": "changePerm",
+            "url": "http://localhost:8000/api/user/permission/3?permission=2",
+            "method": "PATCH",
+            "sortNum": 90000,
+            "created": "2024-05-02T10:31:22.577Z",
+            "modified": "2024-05-02T10:32:43.432Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "permission",
+                    "value": "2",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "admin@admin.com",
+                    "password": "Aa123"
+                }
+            }
+        },
+        {
+            "_id": "e58aa2b7-eb42-436a-b8b7-5dff92371120",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "adottKeszletMod",
+            "url": "http://localhost:8000/api/keszlet/mod/{termekszam}?elnevezes=Predator&marka=aa&keszlet=45&eladasi_ar=1500",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-05-02T10:33:22.563Z",
+            "modified": "2024-05-02T10:36:08.043Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "termekszam",
+                    "value": "1",
+                    "isPath": true
+                },
+                {
+                    "name": "elnevezes",
+                    "value": "Predator",
+                    "isPath": false
+                },
+                {
+                    "name": "marka",
+                    "value": "aa",
+                    "isPath": false
+                },
+                {
+                    "name": "keszlet",
+                    "value": "45",
+                    "isPath": false
+                },
+                {
+                    "name": "eladasi_ar",
+                    "value": "1500",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "manager@manager.com",
+                    "password": "Aa123"
+                }
+            }
+        },
+        {
+            "_id": "42dab5c5-e57a-4618-b8d2-c56d73d4093d",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "rendelesShow",
+            "url": "http://localhost:8000/api/rendeleShow",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-05-02T10:36:36.953Z",
+            "modified": "2024-05-02T10:39:53.270Z",
+            "headers": []
+        },
+        {
+            "_id": "16d0a066-65c5-4ca7-8290-2909f9f1894f",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "rendAllapot",
+            "url": "http://localhost:8000/api/rendtablam/{rend_szam}/{termekId}",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-05-02T10:39:48.085Z",
+            "modified": "2024-05-02T10:40:57.444Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "rend_szam",
+                    "value": "1",
+                    "isPath": true
+                },
+                {
+                    "name": "termekId",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "cdf746cd-31e2-4e88-8308-e4766076c836",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "rendTetelFind",
+            "url": "http://localhost:8000/api/rendtetel/{rend_szam}",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-05-02T10:41:28.431Z",
+            "modified": "2024-05-02T10:41:52.719Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "rend_szam",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "0f4cbca8-d8f7-47f1-b410-1fccb54d4845",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "rendelesTabla",
+            "url": "http://localhost:8000/api/rendtabla/{rend_id}",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-05-02T10:42:04.683Z",
+            "modified": "2024-05-02T10:42:27.957Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "rend_id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        },
+        {
+            "_id": "bef5cb59-6927-4552-b220-84adce15f527",
+            "colId": "d003fc8c-20a0-435f-9257-7aadd9ceec82",
+            "containerId": "08a80508-2e32-4f4e-9f19-203e3263100a",
+            "name": "rTablaLeirasű",
+            "url": "http://localhost:8000/api/rendtablaleiras/{id}",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2024-05-02T10:42:45.138Z",
+            "modified": "2024-05-02T10:42:59.177Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": true
+                }
+            ]
+        }
+    ],
+    "ref": "mtfv4OJ89zZC00ib_M4T81AazRBczwZq9J3NLylIdA1RozfVy7hkI6UxeIJpAXVW3uR1xWf0CyRFJh94ldKOYA"
+}

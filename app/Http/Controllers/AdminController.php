@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\OpcioModel;
+use App\Models\Termek_jellemzo;
+use App\Models\Tulajdonsag;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -33,4 +35,15 @@ class AdminController extends Controller
         return User::find($id)->delete();
     }
 
+    public function newTerJell(Request $request){
+        $termekJell = new Termek_jellemzo();
+        $termekJell->Termek = $request->Termek;
+        $termekJell->Tulajdonsag = $request->Tulajdonsag;
+        $termekJell->ertek = $request->ertek;
+        $termekJell->save();
+    }
+
+    public function showTulajdonsag(){
+        return Tulajdonsag::all();
+    }
 }

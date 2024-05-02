@@ -17,9 +17,14 @@ class Termek_jellemzo extends Model
 
 
         return $query;
-    }
+    } 
 
+    protected $primaryKey = 'composite_key';
 
-    protected $fillable = ['Termek','Tulajdonsag','ertek'];
+    protected $fillable = [
+        'Termek',
+        'Tulajdonsag',
+        'ertek'
+    ];
 
 }
